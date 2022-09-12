@@ -1,0 +1,32 @@
+{% load custom_filters %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NEWS TODAY</title>
+</head>
+<body>
+    <center>
+        <h2>
+            <ins>НОВОСТИ</ins>
+            <hr>
+        </h2>
+            {% for new in news %}
+            <p><h3>{{ new.head|censor }} : ({{ new.create_data}})</h3></p>
+            <p>{{ new.text|truncatechars:20|censor }} <a href="{% url 'detail' slug=new.slug %}">
+                Читать статью.
+            </a></p>
+
+            *   *   *
+
+            {% endfor %}
+
+        {% block title %}
+        {% endblock title %}
+        <br>
+        {% block content %}
+        {% endblock content %}
+
+    </center>
+</body>
+</html>

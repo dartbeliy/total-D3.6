@@ -1,0 +1,23 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {% block title %}
+        <h2>{{ new.head|censor }} </h2>
+        {{ new.create_data|date:'d M Y'  }}
+    {% endblock title %}
+
+</head>
+
+<body>
+
+    {% block content %}
+        <br>{{ new.text|censor }}
+    {% endblock content %}
+
+</body>
+
+</html>

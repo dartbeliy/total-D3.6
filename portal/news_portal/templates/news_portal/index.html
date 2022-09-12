@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница новостей</title>
+</head>
+<body>
+    <center>
+        <h2>
+            НОВОСТИ
+            <hr>
+        </h2>
+            {% for new in news %}
+            <p><h3>{{ new.head }} : ({{ new.create_data|date:'d M Y' }})</h3></p>
+            <!--<p><h3>{{ new.head }} : ({{ time_now|date:'M d Y' }})</h3>-->
+            <p>{{ new.text|truncatechars:20 }} <a href="{% url 'detail' slug=new.slug %}">
+                Читать статью.
+            </a></p>
+
+            *   *   *
+
+            {% endfor %}
+
+        {% block title %}
+        {% endblock title %}
+        <br>
+        {% block content %}
+        {% endblock content %}
+
+    </center>
+</body>
+</html>
